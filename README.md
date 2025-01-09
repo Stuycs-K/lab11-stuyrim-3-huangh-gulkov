@@ -20,8 +20,8 @@ Make a clear list of features that work/dont work
 | Character Name | Starting HP | Attack            | Special Attack  | Support   | Points |
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
 | Quiet Kid :gun:| 20 HP       | Silence (2 DMG)   | AK47 (5 DMG)    | Hoodie Up | DMG    |
-| White Girl     | 30 HP       | HydroFlash (4 DMG) | Fury (10 DMG)   | Perfume   | DMG    |
-| Boss           | XP          |                   |                 |           |        |
+| White Girl :lotion_bottle:| 30 HP       | HydroFlash (4 DMG) | Fury (10 DMG)   | Perfume   | DMG    |
+| Boss :interrobang:| XP          |                   |                 |           |        |
 
 
 ### The Kid in the Corner
