@@ -25,7 +25,7 @@ Make a clear list of features that work/dont work
 + He supports himself through pulling up his hood and erasing himself from other's perception. In this status, he's untargetable. Last one round.
 + When he supports others, he deals 2 DMG to the target because he can not support others.
 
-## The White Girl
+### The White Girl
 - Starts with 30 HP.
 - She attacks by accidentally dropping her metal thermo on the ground, making a ruckus (4 DMG).
 - Her special attack is getting her Starbucks/Pumpkin Spice Latte taken away, and she releases her fury on a random enemy (10 DMG). She must possesses a Starbuck drink in order for her to use this attack.
