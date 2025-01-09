@@ -18,9 +18,16 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
-### Kid in the Corner
+### The Kid in the Corner
 + Starts with 25 HP.
-+ He attacks with his silence(2 DMG). For every time he attacks, he writes down the name of the one being attacked in his Death Note. Once the number of times reach a certain number, he automatically unleashes his special attack.
-+ His special attack is him pulling out his hidden AK47 from his backpack and attacking all enemies(10 DMG/enemy).
++ He attacks with his silence (2 DMG). For every time he attacks, he writes down the name of the one being attacked in his Death Note. Once the number of times reaches 3 (on any enemy), he automatically unleashes his special attack.
++ His special attack is him pulling out his hidden AK47 from his backpack and attacking all enemies, dealing damage based on the number of times he documented the enemies' name (5 DMG/time).
 + He supports himself through pulling up his hood and erasing himself from other's perception. In this status, he's untargetable. Last one round.
 + When he supports others, he deals 2 DMG to the target because he can not support others.
+
+## The White Girl
+- Starts with 30 HP.
+- She attacks by accidentally dropping her metal thermo on the ground, making a ruckus (4 DMG).
+- Her special attack is getting her Starbucks/Pumpkin Spice Latte taken away, and she releases her fury on a random enemy (10 DMG). She must possesses a Starbuck drink in order for her to use this attack.
+- She supports others by spraying perfume on herself, increasing the probability of herself getting attacked by enemies.
+- She supports herself by buying herself a Starbucks drink.
