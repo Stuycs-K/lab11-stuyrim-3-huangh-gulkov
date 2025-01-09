@@ -18,5 +18,9 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
-replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
-
+### Kid in the Corner
++ Starts with 25 HP.
++ He attacks with his silence(2 DMG). For every time he attacks, he writes down the name of the one being attacked in his Death Note. Once the number of times reach a certain number, he automatically unleashes his special attack.
++ His special attack is him pulling out his hidden AK47 from his backpack and attacking all enemies(10 DMG/enemy).
++ He supports himself through pulling up his hood and erasing himself from other's perception. In this status, he's untargetable. Last one round.
++ When he supports others, he deals 2 DMG to the target because he can not support others.
