@@ -19,9 +19,9 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 | Character Name | Starting HP | Attack            | Special Attack  | Support   | Points |
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
-| Quiet Kid :gun:| 20 HP       | Silence (2 DMG)   | AK47 (5 DMG)    | Hoodie Up | DMG    |
-| White Girl :lotion_bottle:| 30 HP       | HydroFlash (4 DMG) | Fury (10 DMG)   | Perfume   | DMG    |
-| Boss :interrobang:| XP          |                   |                 |           |        |
+|  :gun: Quiet Kid| 20 HP       | Silence (2 DMG)   | AK47 (5 DMG)    | Hoodie Up | DMG    |
+|:lotion_bottle: White Girl | 30 HP       | HydroFlash (4 DMG) | Fury (10 DMG)   | Perfume   | DMG    |
+| :interrobang: Boss | XP          |                   |                 |           |        |
 
 
 ### The Kid in the Corner
