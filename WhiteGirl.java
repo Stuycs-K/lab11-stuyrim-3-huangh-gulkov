@@ -2,7 +2,7 @@ public class WhiteGirl extends Adventurer{
 
   //name, HP, and maxHP inheritted
   private boolean haveStarbucks;
-  private in StarbucksOwned;
+  private int StarbucksOwned;
 
   //constructor
   public WhiteGirl(String name){
@@ -13,14 +13,15 @@ public class WhiteGirl extends Adventurer{
 
   //special resources
   public String getSpecialName(){
-    return "haveStarbucks";
+    return "StarbucksOwned";
   }
   public int getSpecial(){return StarbucksOwned;}
-  public boolean getSpecial(){
-    return haveStarbucks;
-  }
   public int getSpecialMax(){return 2;}//at most two startbucks
   public void setSpecial(int n){StarbucksOwned = n;}
+  //for boolean
+  public boolean ownStarbucks(){return haveStarbucks;}
+  public void setHaveStarbucks(boolean b){haveStarbucks = b;}
+
 
   //atk, support, special
   public String attack(Adventurer other){
@@ -37,11 +38,13 @@ public class WhiteGirl extends Adventurer{
     String drink = StarbucksDrink[(int) Math.random() * 4];
     return this + " buys herself a " + drink + ".";
   }
-  public specialAttack(Adventurer other){
+  public String specialAttack(Adventurer other){
     if(haveStarbucks){
       restoreSpecial(-1);
-      
+      Adventurer Target = getEnemy(((int) Math.random() * getEnemiesSize()));
+      Target.applyDamage(10);
+      return Target + " robbed " + this + "'s Starbucks. " + this + " becomes furious and attacks " + Target + ", dealing 10 DMG.";
     }
-    return this + " doesn't have any Starbucks. " + this + " must have at least one Starbucks to use the special Attack.";
+    return this + " doesn't have any Starbucks. " + this + " must have at least one Starbucks drink to use the special Attack.";
   }
 }

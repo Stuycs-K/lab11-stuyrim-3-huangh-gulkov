@@ -1,7 +1,10 @@
 import java.util.Random;
+import java.util.ArrayList;
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private ArrayList<Adventurer> Enemies;
+  private ArrayList<Adventurer> Team;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -69,6 +72,8 @@ public abstract class Adventurer{
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
+    Enemies = new ArrayList<Adventurer>();
+    Team = new ArrayList<Adventurer>();
   }
 
   //toString method
@@ -92,6 +97,26 @@ public abstract class Adventurer{
     maxHP = newMax;
   }
 
+  public ArrayList<Adventurer> getEnemies(){
+    return Enemies;
+  }
+  public Adventurer getEnemy(int n){
+    return Enemies.get(n);
+  }
+  public int getEnemiesSize(){
+    return Enemies.size();
+  }
+
+  public ArrayList<Adventurer> getTeam(){
+    return Team;
+  }
+  public Adventurer getTeam(int n){
+    return Team.get(n);
+  }
+  public int getTeamSize(){
+    return Team.size();
+  }
+
   //Set Methods
   public void setHP(int health){
     this.HP = health;
@@ -99,5 +124,25 @@ public abstract class Adventurer{
 
   public void setName(String s){
     this.name = s;
+  }
+
+  public void setTeam(ArrayList<Adventurer> Team){
+    this.Team = Team;
+  }
+  public void addToTeam(Adventurer other){
+    Team.add(other);
+  }
+  public void removeFromTeam(Adventurer other){
+    Team.remove(other);
+  }
+
+  public void setEnemies(ArrayList<Adventurer> Enemies){
+    this.Enemies = Enemies;
+  }
+  public void addToEnemies(Adventurer other){
+    Enemies.add(other);
+  }
+  public void removeFromEnemies(Adventurer other){
+    Enemies.remove(other);
   }
 }
