@@ -73,7 +73,7 @@ public class Text{
     go(4,30);
     System.out.print("right?");
 
-    go(5,1);//put the terminal at the end of the output again before the program ends.
+    go(5,1);// the terminal at the end of the output again before the program ends.
 
     reset();
     showCursor();
