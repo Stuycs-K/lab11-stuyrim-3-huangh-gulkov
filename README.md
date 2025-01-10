@@ -15,7 +15,7 @@ Make a clear list of features that work/dont work:
 
 - :beetle: This is a bug that affects the game.
 
-
+<br>
 
 1. :question: The Quiet Kid works except for his support himself skill. Need to figure out how to make him untargetable, which I suppose will come when we make the party function.
 
