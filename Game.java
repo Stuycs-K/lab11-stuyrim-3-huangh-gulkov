@@ -12,9 +12,36 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Text.go(1, 1); 
+    Text.colorize("", Text.RED + Text.BRIGHT);
+        for (int i = 0; i < 80; i++) {
+            System.out.print("-");
+        }
+        Text.go(30, 1); 
+        for (int i = 0; i < 80; i++) {
+            System.out.print("-");
+        }
+        for (int i = 2; i < 30; i++) {
+            Text.go(i, 1); 
+            System.out.print("|");
+            Text.go(i, 80); 
+            System.out.print("|");
+        }
+        for(int i = 2; i <= 10; i++){
+          Text.go(i, 27);
+          System.out.print("|");
+          Text.go(i, 54);
+          System.out.print("|");
+        }
+        Text.go(2, 11);
+        for(int i = 2; i < 79; i++){
+          System.out.print("-");
+        }
+        Text.go(2, 27);
+        for(int i = 2; i < 79; i++){
+          System.out.print("-");
+        }
+        Text.reset();
   }
 
   //Display a line of text starting at
@@ -37,9 +64,12 @@ public class Game{
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Text.go(row - 1, col);
+    for(int i = 0; i < text.length(); i++){
+      System.out.print("-");
+    }
+    Text.go(row, col);
+    System.out.print("|" + text);
   }
 
 
