@@ -43,4 +43,4 @@ Make a clear list of features that work/dont work:
 - She attacks by accidentally dropping her metal thermo on the ground, making a ruckus (4 DMG).
 - Her special attack is getting her Starbucks/Pumpkin Spice Latte taken away, and she releases her fury on a random enemy (10 DMG). She must possesses a Starbuck drink in order for her to use this attack.
 - She supports others by spraying perfume on herself, increasing the probability of herself getting attacked by enemies.
-- She supports herself by buying herself a Starbucks drink.
+- She supports herself by buying herself a Starbucks drink. She can have at max 2 Starbucks.
