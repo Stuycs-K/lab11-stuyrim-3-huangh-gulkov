@@ -67,6 +67,9 @@ public class CodeWarrior extends Adventurer{
   }
   /*Restores 5 special to other*/
   public String support(Adventurer other){
+    if(other.getmaxHP() == 25){
+      return this + " can't support this character.";
+    }
     return "Gives a coffee to "+other+" and restores "
     + other.restoreSpecial(5)+" "+other.getSpecialName();
   }

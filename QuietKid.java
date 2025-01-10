@@ -50,7 +50,7 @@ public class QuietKid extends Adventurer{
       timesAttacked.add(1);
     }
     if(reachedLimit()){
-      return "The Quiet Kid attacks " + other + " with his silence, dealing 2 DMG." + specialAttack(other);
+      return "The Quiet Kid attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note.\n" + specialAttack(other);
     }
     return "The Quiet Kid attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note.";
   }
@@ -75,19 +75,50 @@ public class QuietKid extends Adventurer{
     resetDeathNote();
     String result = "The Quiet kid pulls out his hidden AK47 from his bag and attacks ";
     for(int i = 0; i < expectedTarget.length; i++){
-      if(i == expectedTarget.length - 1){
-        result += "and " + expectedTarget[i].getName();
+      if(expectedTarget.length == 1){
+        result += expectedTarget[i];
       }
-      result += expectedTarget[i].getName() + ", ";
+      else if(expectedTarget.length == 2){
+        if(i == 0){
+          result += expectedTarget[i];
+        }
+        if(i == 1){
+          result += " and " + expectedTarget[i];
+        }
+      }
+      else if(i == expectedTarget.length - 1){
+        result += "and " + expectedTarget[i];
+      }
+      else{
+        result += expectedTarget[i] + ", ";
+      }
     }
     result += ", dealing ";
     for(int i = 0; i < expectedDMG.length; i++){
-      if(i == expectedDMG.length - 1){
+      if(expectedDMG.length == 1){
+        result += expectedDMG[i];
+      }
+      else if(expectedDMG.length == 2){
+        if(i == 0){
+          result += expectedDMG[i];
+        }
+        if(i == 1){
+          result += " and " + expectedDMG[i];
+        }
+      }
+      else if(i == expectedDMG.length - 1){
         result += "and " + expectedDMG[i];
       }
-      result += expectedDMG[i] + ", ";
+      else{
+        result += expectedDMG[i] + ", ";
+      }
     }
-    result += " each. Death Note is reset.";
+    if(expectedDMG.length == 1){
+      result += " DMG. Death Note is reset";
+    }
+    else{
+      result += " DMG each. Death Note is reset.";
+    }
     return result;
   }
 }
