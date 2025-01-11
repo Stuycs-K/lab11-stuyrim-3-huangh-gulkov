@@ -119,7 +119,12 @@ public abstract class Adventurer{
 
   //Set Methods
   public void setHP(int health){
-    this.HP = health;
+    if(health > maxHP){
+      this.HP = maxHP;
+    }
+    else{
+      this.HP = health;
+    }
   }
 
   public void setName(String s){
@@ -144,5 +149,10 @@ public abstract class Adventurer{
   }
   public void removeFromEnemies(Adventurer other){
     Enemies.remove(other);
+  }
+
+  //others
+  public boolean inEnemies(Adventurer target){
+    return Enemies.indexOf(target) != -1;
   }
 }

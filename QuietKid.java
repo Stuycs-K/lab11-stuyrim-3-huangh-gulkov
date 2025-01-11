@@ -80,6 +80,9 @@ public class QuietKid extends Adventurer{
     untargetable = true;
     return this + " pulls up his hood and erases his existence from others' perception. He becomes untargetable for one round.";
   }
+  public String specialAttack(){//wrapper
+    return specialAttack(this);
+  }
   public String specialAttack(Adventurer other){
     targetable();
     Adventurer[] expectedTarget = new Adventurer[enemiesAttacked.size()];
