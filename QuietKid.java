@@ -5,12 +5,14 @@ public class QuietKid extends Adventurer{
   //name, HP, and maxHP inheritted
   private ArrayList<Adventurer> enemiesAttacked;
   private ArrayList<Integer> timesAttacked;
+  private boolean untargetable;
 
   //constructor
   public QuietKid(String name){
     super(name, 25);
     enemiesAttacked = new ArrayList<Adventurer>();
     timesAttacked = new ArrayList<Integer>();
+    untargetable = false;
   }
 
   //special resources is not needed; do need a method to check whether any of them is three
@@ -38,8 +40,19 @@ public class QuietKid extends Adventurer{
     enemiesAttacked = new ArrayList<Adventurer>();
     timesAttacked = new ArrayList<Integer>();
   }
+  //check untargetable and adds back in
+  public void targetable(){
+    if(untargetable == true){
+      untargetable = false;
+      for(Adventurer current : getEnemies()){
+        current.addToEnemies(this);
+      }
+    }
+  }
 
+  //atk, support, and special
   public String attack(Adventurer other){
+    targetable();
     other.applyDamage(2);
     if(enemyInBook(other)){
       int index = enemiesAttacked.indexOf(other);
@@ -55,22 +68,33 @@ public class QuietKid extends Adventurer{
     return this + " attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note.";
   }
   public String support(Adventurer other){
+    targetable();
     other.applyDamage(2);
     return this + " can not support others. By doing so, he deals 2 DMG to the target Adventurer.";
   }
   public String support(){
-    //HAVE TO DEAL WITH THIS LATER ON HOW THIS MECHANISM WORKS
+    targetable();
+    for(Adventurer current : getEnemies()){
+      current.removeFromEnemies(this);
+    }
+    untargetable = true;
     return this + " pulls up his hood and erases his existence from others' perception. He becomes untargetable for one round.";
   }
   public String specialAttack(Adventurer other){
+    targetable();
     Adventurer[] expectedTarget = new Adventurer[enemiesAttacked.size()];
     int[] expectedDMG = new int[enemiesAttacked.size()];
     for(int i = 0; i < enemiesAttacked.size(); i++){
-      int expectedDamage = timesAttacked.get(i) * 5;
-      expectedDMG[i] = expectedDamage;
-      Adventurer target = enemiesAttacked.get(i);
-      expectedTarget[i] = target;
-      target.applyDamage(expectedDMG[i]);
+      if(inEnemies(enemiesAttacked.get(i))){
+        int expectedDamage = timesAttacked.get(i) * 5;
+        expectedDMG[i] = expectedDamage;
+        Adventurer target = enemiesAttacked.get(i);
+        expectedTarget[i] = target;
+        target.applyDamage(expectedDMG[i]);
+      }
+    }
+    if(expectedTarget[0] == null){
+      return this + " pulls out his hidden AK47, but no target found. " + this + " sadly puts it away.";
     }
     resetDeathNote();
     String result = this + " pulls out his hidden AK47 from his bag and attacks ";
