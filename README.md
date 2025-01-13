@@ -20,7 +20,8 @@ Make a clear list of features that work/dont work:
 
 ##### Actual Features
 
-1. :question: The Quiet Kid works except for his support himself skill. Need to figure out how to make him untargetable, which I suppose will come when we make the party function.
+1. :white_check_mark: The Quiet Kid tested.
+2. :question: White Girl tested except for self-support. Can only be tested when parties are done.
 
 
 ## Adventurer Subclasses
