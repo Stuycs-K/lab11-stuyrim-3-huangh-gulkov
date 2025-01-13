@@ -12,7 +12,7 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-    Text.hideCursor();
+   Text.hideCursor();
   Text.clear(); 
   Text.go(1,1);
         for (int i = 0; i < 80; i++) {
@@ -29,6 +29,29 @@ for (int i = 2; i <= 29; i++) {
         for (int i = 0; i < 80; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
+        for (int i = 2; i < 10; i++) {
+          Text.go(i, 27);
+            System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
+            Text.go(i, 54);
+            System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
+        }
+        Text.go(9,1);
+        for (int i = 0; i < 79; i++) {
+            System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
+        }
+        
+
+        for (int i = 2; i < 10; i++) {
+          Text.go(i + 20, 27);
+            System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
+            Text.go(i + 20, 54);
+            System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
+        }
+        Text.go(21,1);
+        for (int i = 0; i < 79; i++) {
+            System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
+        }
+        Text.go(30,80);
     Text.reset();
     Text.showCursor();
   }
