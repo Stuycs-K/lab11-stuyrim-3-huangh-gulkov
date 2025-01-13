@@ -123,9 +123,14 @@ for (int i = 2; i <= 29; i++) {
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       for(int i = 0; i < party.size(); i++){
         if(party.size() > 2){
-          TextBox(startRow, 2, 26, 1, party.get(i).getName());
-          TextBox(startRow, 2, 26, 1, "HP: " + party.get(i).getHP());
-          TextBox(startRow, 2, 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getName());
+          TextBox(startRow, 2 + (28 * i), 26, 1, "HP: " + party.get(i).getHP());
+          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        }
+        else{
+          TextBox(startRow, 28, 26, 1, party.get(i).getName());
+          TextBox(startRow, 28, 26, 1, "HP: " + party.get(i).getHP());
+          TextBox(startRow, 28, 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
         }
       }
     }
