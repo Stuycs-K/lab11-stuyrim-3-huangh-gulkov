@@ -210,7 +210,7 @@ for (int i = 2; i <= 29; i++) {
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies, 2, 26 );//initial state.
 
     //Main loop
 
