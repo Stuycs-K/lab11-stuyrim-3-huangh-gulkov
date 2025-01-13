@@ -12,7 +12,7 @@ public class Game{
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
-   Text.hideCursor();
+  Text.hideCursor();
   Text.clear(); 
   Text.go(1,1);
         for (int i = 0; i < 80; i++) {
@@ -54,6 +54,7 @@ for (int i = 2; i <= 29; i++) {
         Text.go(30,80);
     Text.reset();
     Text.showCursor();
+
   }
 
   //Display a line of text starting at
