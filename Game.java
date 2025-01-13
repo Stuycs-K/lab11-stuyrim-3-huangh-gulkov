@@ -61,9 +61,8 @@ for (int i = 2; i <= 29; i++) {
   //(columns and rows start at 1 (not zero) in the terminal)
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    Text.go(startRow, startCol);
+    System.out.print(Text.colorize(s, Text.RED + Text.BRIGHT));
   }
 
   /*Use this method to place text on the screen at a particular location.
@@ -77,13 +76,41 @@ for (int i = 2; i <= 29; i++) {
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
-    Text.go(row - 1, col);
-    for(int i = 0; i < text.length(); i++){
-      System.out.print("-");
+    int index = 0;
+    int end;
+    for(int i = 0; i < height; i++){
+      Text.go(row + i, height);
+    if(text.length() > index){
+      if(index + width < text.length()){
+        end = index + width;
+      }
+      if(index + width > text.length()){
+        end = text.length();
+      }
+      System.out.print(text.substring(index, end));
+      index = end;
     }
-    Text.go(row, col);
-    System.out.print("|" + text);
+
+
+
+
+      while(text.length() > width && height > 0){
+        String textleft = text.substring(width);
+        System.out.print(text.substring(0,width));
+        Text.go(row + 1, col);
+        height--;
+      }
+      System.out.println(textleft);
+    }
+    }
   }
+
+
+
+
+
+
+
 
 
 
