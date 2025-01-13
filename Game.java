@@ -77,7 +77,7 @@ for (int i = 2; i <= 29; i++) {
   */
   public static void TextBox(int row, int col, int width, int height, String text){
     int index = 0;
-    int end;
+    int end = 0;
     for(int i = 0; i < height; i++){
       Text.go(row + i, height);
     if(text.length() > index){
@@ -90,30 +90,20 @@ for (int i = 2; i <= 29; i++) {
       System.out.print(text.substring(index, end));
       index = end;
     }
-
-
-
-
-      while(text.length() > width && height > 0){
-        String textleft = text.substring(width);
-        System.out.print(text.substring(0,width));
-        Text.go(row + 1, col);
-        height--;
+    int spaces = width - (end - index);
+    if(spaces > 0){
+      System.out.print(" ");
+    }
+    else{
+      while(width > 0){
+        System.out.print(" ");
+        width--;
       }
-      System.out.println(textleft);
     }
+
     }
+
   }
-
-
-
-
-
-
-
-
-
-
 
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
