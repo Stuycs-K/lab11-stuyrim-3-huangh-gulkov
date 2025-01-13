@@ -21,14 +21,15 @@ Make a clear list of features that work/dont work:
 ##### Actual Features
 
 1. :white_check_mark: The Quiet Kid tested.
-2. :question: White Girl tested except for self-support. Can only be tested when parties are done.
+2. :question: Young Karen tested except for self-support. Can only be tested when parties are done.
+3. :question: Draw screen exists, but not tested
 
 
 ## Adventurer Subclasses
 | Character Name | Starting HP | Attack            | Special Attack  | Support   | Points |
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
 |  :gun: Quiet Kid| 25 HP       | Silence (2 DMG)   | AK47 (5 DMG/mark)    | Hoodie Up | Marks    |
-|:lotion_bottle: White Girl | 30 HP       | HydroFlask (4 DMG) | Fury (10 DMG)   | Perfume   | Starbuck    |
+|:lotion_bottle: Young Karen | 30 HP       | HydroFlask (4 DMG) | Fury (10 DMG)   | Perfume   | Starbuck    |
 | :interrobang: Boss | XP          |                   |                 |           |        |
 
 
@@ -39,7 +40,7 @@ Make a clear list of features that work/dont work:
 + He supports himself through pulling up his hood and erasing himself from other's perception. In this status, he's untargetable. Last one round.
 + When he supports others, he deals 2 DMG to the target because he can not support others.
 
-### The White Girl
+### The Young Karen
 - Starts with 30 HP.
 - She attacks by accidentally dropping her metal thermo on the ground, making a ruckus (4 DMG).
 - Her special attack is getting her Starbucks/Pumpkin Spice Latte taken away, and she releases her fury on a random enemy (10 DMG). She must possesses a Starbuck drink in order for her to use this attack.

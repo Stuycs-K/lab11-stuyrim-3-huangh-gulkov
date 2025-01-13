@@ -126,10 +126,18 @@ for (int i = 2; i <= 29; i++) {
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
-
-      /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      //YOUR CODE HERE
-      /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+      for(int i = 0; i < party.size(); i++){
+        if(party.size() > 2){
+          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getName());
+          TextBox(startRow, 2 + (28 * i), 26, 1, "HP: " + party.get(i).getHP());
+          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        }
+        else{
+          TextBox(startRow, 28, 26, 1, party.get(i).getName());
+          TextBox(startRow, 28, 26, 1, "HP: " + party.get(i).getHP());
+          TextBox(startRow, 28, 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        }
+      }
     }
 
 
@@ -150,14 +158,12 @@ for (int i = 2; i <= 29; i++) {
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
-
+  public static void drawScreen(ArrayList<Adventurer> friend, ArrayList<Adventurer> enemy,int friendRow, int enemyRow ){
     drawBackground();
-
     //draw player party
-
+    drawParty(friend, friendRow);
     //draw enemy party
-
+    drawParty(enemy, enemyRow);
   }
 
   public static String userInput(Scanner in){
