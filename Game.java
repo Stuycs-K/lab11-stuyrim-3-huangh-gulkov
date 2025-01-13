@@ -153,14 +153,12 @@ for (int i = 2; i <= 29; i++) {
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
-
+  public static void drawScreen(ArrayList<Adventurer> friend, ArrayList<Adventurer> enemy,int friendRow, int enemyRow ){
     drawBackground();
-
     //draw player party
-
+    drawParty(friend, friendRow);
     //draw enemy party
-
+    drawParty(enemy, enemyRow);
   }
 
   public static String userInput(Scanner in){
