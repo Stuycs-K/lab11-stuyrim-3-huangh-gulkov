@@ -121,10 +121,13 @@ for (int i = 2; i <= 29; i++) {
     * ***THIS ROW INTENTIONALLY LEFT BLANK***
     */
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
-
-      /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      //YOUR CODE HERE
-      /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+      for(int i = 0; i < party.size(); i++){
+        if(party.size() > 2){
+          TextBox(startRow, 2, 26, 1, party.get(i).getName());
+          TextBox(startRow, 2, 26, 1, "HP: " + party.get(i).getHP());
+          TextBox(startRow, 2, 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
+        }
+      }
     }
 
 
