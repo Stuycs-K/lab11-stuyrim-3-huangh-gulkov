@@ -13,19 +13,19 @@ public class Game{
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
   Text.hideCursor();
-  Text.clear(); 
+  Text.clear();
   Text.go(1,1);
         for (int i = 0; i < 80; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
-  
+
 for (int i = 2; i <= 29; i++) {
-            Text.go(i, 1); 
+            Text.go(i, 1);
             System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
-            Text.go(i, 80); 
+            Text.go(i, 80);
       System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
         }
-        Text.go(29, 1); 
+        Text.go(29, 1);
         for (int i = 0; i < 80; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
@@ -39,7 +39,7 @@ for (int i = 2; i <= 29; i++) {
         for (int i = 0; i < 79; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
-        
+
 
         for (int i = 2; i < 10; i++) {
           Text.go(i + 20, 27);
@@ -108,7 +108,12 @@ for (int i = 2; i <= 29; i++) {
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      ArrayList<Adventurer> listOfAdventurer = new ArrayList<Adventurer>();
+      listOfAdventurer.add(new QuietKid("Winston"));
+      listOfAdventurer.add(new WhiteGirl("Margaret"));
+      listOfAdventurer.add(new CodeWarrior("Archibald"));
+      int index = (int) (Math.random() * 3);
+      return listOfAdventurer.get(index);
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -185,7 +190,7 @@ for (int i = 2; i <= 29; i++) {
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
