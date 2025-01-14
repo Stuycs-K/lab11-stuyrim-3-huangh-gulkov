@@ -16,7 +16,7 @@ public class QuietKid extends Adventurer{
   }
 
   //special resources is not needed; do need a method to check whether any of them is three
-  public String getSpecialName(){return "";}//the useless methods
+  public String getSpecialName(){return "Shhh!";}//the useless methods
   public int getSpecial(){return 0;}
   public int getSpecialMax(){return 0;}
   public void setSpecial(int n){}
@@ -80,9 +80,6 @@ public class QuietKid extends Adventurer{
     untargetable = true;
     return this + " pulls up his hood and erases his existence from others' perception. He becomes untargetable for one round.";
   }
-  public String specialAttack(){//wrapper
-    return specialAttack(this);
-  }
   public String specialAttack(Adventurer other){
     targetable();
     Adventurer[] expectedTarget = new Adventurer[enemiesAttacked.size()];
@@ -122,7 +119,8 @@ public class QuietKid extends Adventurer{
     }
     result += ", dealing ";
     for(int i = 0; i < expectedDMG.length; i++){
-      if(expectedDMG.length == 1){
+      if(expectedDMG.length ==
+         1){
         result += expectedDMG[i];
       }
       else if(expectedDMG.length == 2){

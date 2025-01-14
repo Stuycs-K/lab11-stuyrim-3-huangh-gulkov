@@ -1,11 +1,11 @@
-public class WhiteGirl extends Adventurer{
+public class YoungKaren extends Adventurer{
 
   //name, HP, and maxHP inheritted
   private int StarbucksOwned;
   private boolean moreTargetable;
 
   //constructor
-  public WhiteGirl(String name){
+  public YoungKaren(String name){
     super(name, 30);
     StarbucksOwned = 0;
     moreTargetable = false;
@@ -41,9 +41,6 @@ public class WhiteGirl extends Adventurer{
     String[] StarbucksDrink = {"Brown Sugar Oatmilk Shaken Espresso with Vanilla Cold Foam", "Mango Dragonfruit Refresher with Lemonade with Matcha Cold Foam", "Brown Sugar Oatmilk Short Cortado with Extra Cinnamon", "Black Tea (Half Lemonade, 2 Pumps of Sugarfree Vanilla Syrup)"};
     String drink = StarbucksDrink[(int) (Math.random() * 4)];
     return this + " buys herself a " + drink + ".";
-  }
-  public String specialAttack(){
-    return specialAttack(this);
   }
   public String specialAttack(Adventurer other){
     lessTargetable();
