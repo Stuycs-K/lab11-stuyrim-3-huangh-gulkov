@@ -110,7 +110,7 @@ for (int i = 2; i <= 29; i++) {
     public static Adventurer createRandomAdventurer(){
       ArrayList<Adventurer> listOfAdventurer = new ArrayList<Adventurer>();
       listOfAdventurer.add(new QuietKid("Winston"));
-      listOfAdventurer.add(new WhiteGirl("Margaret"));
+      listOfAdventurer.add(new YoungKaren("Margaret"));
       listOfAdventurer.add(new CodeWarrior("Archibald"));
       int index = (int) (Math.random() * 3);
       return listOfAdventurer.get(index);
@@ -196,15 +196,35 @@ for (int i = 2; i <= 29; i++) {
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
     ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    if((int) (Math.random() * 2) == 0)
+    if((int) (Math.random() * 2) == 0){
+      enemies.add(new Boss());
+    }
+    else{
+      enemies.add(new CodeWarrior("Steve"));
+      enemies.add(new YoungKaren("Heather"));
+      enemies.add(new QuietKid("Lucas"));
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+    party.add(new CodeWarrior("Boris"));
+    party.add(new YoungKaren("Liz"));
+    party.add(new QuietKid("Neville"));
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+    //add enemies and party to all adventurers
+    for(Adventurer current : enemies){
+      current.setEnemies(party);
+      current.setTeam(enemies);
+    }
+    for(Adventurer current : party){
+      current.setEnemies(enemies);
+      current.setTeam(party);
+    }
+
 
     boolean partyTurn = true;
     int whichPlayer = 0;
@@ -233,14 +253,19 @@ for (int i = 2; i <= 29; i++) {
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          if(party.get(whichPlayer) instanceof QuietKid || party.get(whichPlayer) instanceof YoungKaren){
+            party.get(whichPlayer).specialAttack(party.get(whichPlayer));
+          }
+          else{
+            party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         //////////////////////////////// THIS IS THE CORRECT WAY OF DOING IT ////////////////////////////////
@@ -248,7 +273,12 @@ for (int i = 2; i <= 29; i++) {
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          if(Integer.parseInt(input.substring(input.length() - 1, input.length())) == whichPlayer){
+            party.get(whichPlayer).support();
+          }
+          else{
+            party.get(whichPlayer).support(party.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 

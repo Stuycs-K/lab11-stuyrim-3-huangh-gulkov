@@ -71,7 +71,7 @@ public class CodeWarrior extends Adventurer{
       other.setHP(other.getHP() + 5);
       return this + " gives a coffee to " + other + " and restores 5 HP.";
     }
-    if(other instanceof WhiteGirl){
+    if(other instanceof YoungKaren){
       other.setHP(other.getHP() + 5);//restores 5 HP and increase starbucks by one
       other.restoreSpecial(1);
       return this + " gives a coffee to " + other + " and restores 5 HP. " + other + "'s number of Starbucks drink increase by 1.";

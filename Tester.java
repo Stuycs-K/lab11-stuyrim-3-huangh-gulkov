@@ -20,7 +20,7 @@ public class Tester{
     // System.out.println(Bob.support());
     // System.out.println(Tim.support(Bob));
     // System.out.println(Bob.getHP());
-    WhiteGirl Kate = new WhiteGirl("Kate");
+    YoungKaren Kate = new YoungKaren("Kate");
     System.out.println(Kate + ", " + Kate.getHP() + " , " + Kate.getSpecial());
     // System.out.println(Tim.support(Kate) + "\n" + Kate.getHP() + Kate.getSpecial());
     System.out.println(Kate.attack(Bob));
