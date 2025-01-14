@@ -334,7 +334,7 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies, 2, 26);
 
 
     }//end of main game loop
