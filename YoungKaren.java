@@ -13,7 +13,7 @@ public class YoungKaren extends Adventurer{
 
   //special resources
   public String getSpecialName(){
-    return "StarbucksOwned";
+    return "Starbucks";
   }
   public int getSpecial(){return StarbucksOwned;}
   public int getSpecialMax(){return 2;}//at most two startbucks
