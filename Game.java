@@ -267,6 +267,7 @@ for (int i = 2; i <= 29; i++) {
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    drawText(preprompt, 20, 2);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input

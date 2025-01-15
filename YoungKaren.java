@@ -13,7 +13,7 @@ public class YoungKaren extends Adventurer{
 
   //special resources
   public String getSpecialName(){
-    return "StarbucksOwned";
+    return "Starbucks";
   }
   public int getSpecial(){return StarbucksOwned;}
   public int getSpecialMax(){return 2;}//at most two startbucks
@@ -33,7 +33,7 @@ public class YoungKaren extends Adventurer{
       current.addToEnemies(this);
       current.addToEnemies(this);
     }
-    return this + " sprays herself with perfume, making her more susceptible to enemy attacks.";
+    return this + " sprays herself with perfume, making her more susceptible to enemy attacks. Lasts one round.";
   }
   public String support(){
     lessTargetable();
