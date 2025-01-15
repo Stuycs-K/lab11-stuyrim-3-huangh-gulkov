@@ -214,6 +214,7 @@ for (int i = 2; i <= 29; i++) {
      long startTime = System.currentTimeMillis();
     while(System.currentTimeMillis() - startTime <= 1500){
     sparkles();
+    }
 
 
     //Things to attack:
