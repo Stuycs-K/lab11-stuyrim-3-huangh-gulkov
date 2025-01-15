@@ -31,7 +31,7 @@ Make a clear list of features that work/dont work:
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
 |  :gun: Quiet Kid| 25 HP      | Silence (2 DMG)   | AK47 (5 DMG/mark) | Hoodie Up | Marks    |
 |:lotion_bottle: Young Karen | 30 HP | HydroFlask (4 DMG) | Fury (10 DMG) | Perfume | Starbuck |
-| :interrobang: Boss | 50 HP   |  WhackingLadle(5 (+5) DMG) | Morph (10 (+5) DMG) | Wage |
+| :interrobang: Boss | 50 HP   |  WhackingLadle(5 (+5) DMG) | Morph (10 (+5) DMG) | Regen Health | Wage |
 
 
 ### The Kid in the Corner
