@@ -8,14 +8,24 @@ public class Game{
   public static void main(String[] args) {
     run();
   }
+   public static void sparkles(){
+    for(int i = 0; i <200; i++){
+      int y = (int)(Math.random() * 31);
+      int x = (int)(Math.random() * 81);
+      int color = (int)(Math.random() * 68 - 30);
+      Text.go(y,x);
+      System.out.print(Text.colorize(".", color));
+    }
+    Text.clear();
+  }
 
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
-  public static void drawBackground(){
+   public static void drawBackground(){
   Text.hideCursor();
   Text.clear();
-  Text.go(1,1);
-        for (int i = 0; i < 80; i++) {
+  Text.go(1,2);
+        for (int i = 0; i < 78; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
 
@@ -25,32 +35,43 @@ for (int i = 2; i <= 29; i++) {
             Text.go(i, 80);
       System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
         }
-        Text.go(29, 1);
-        for (int i = 0; i < 80; i++) {
+        Text.go(30, 2);
+        for (int i = 0; i < 78; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
-        for (int i = 2; i < 10; i++) {
+        for (int i = 4; i < 8; i++) {
           Text.go(i, 27);
             System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
             Text.go(i, 54);
             System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
         }
-        Text.go(9,1);
-        for (int i = 0; i < 79; i++) {
+        Text.go(7,2);
+        for (int i = 0; i < 78; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
+        Text.go(3,2);
+        for (int i = 0; i < 78; i++) {
+            System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
+        }
+        Text.go(2,31);
+        System.out.print("This is your party");
 
-
-        for (int i = 2; i < 10; i++) {
+        for (int i = 4; i < 9; i++) {
           Text.go(i + 20, 27);
             System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
             Text.go(i + 20, 54);
             System.out.print(Text.colorize("|", Text.RED + Text.BRIGHT));
         }
-        Text.go(21,1);
-        for (int i = 0; i < 79; i++) {
+        Text.go(24,2);
+        for (int i = 0; i < 78; i++) {
             System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
         }
+        Text.go(28,2);
+        for (int i = 0; i < 78; i++) {
+            System.out.print(Text.colorize("-", Text.RED + Text.BRIGHT));
+        }
+        Text.go(29,33);
+        System.out.print("This is the enemy");
         Text.go(30,80);
     Text.reset();
     Text.showCursor();
@@ -79,7 +100,7 @@ for (int i = 2; i <= 29; i++) {
     int index = 0;
     int end = 0;
     for(int i = 0; i < height; i++){
-      Text.go(row + i, height);
+      Text.go(row + i, col);
     if(text.length() > index){
       if(index + width < text.length()){
         end = index + width;
@@ -190,6 +211,9 @@ for (int i = 2; i <= 29; i++) {
     //Clear and initialize
     Text.hideCursor();
     Text.clear();
+     long startTime = System.currentTimeMillis();
+    while(System.currentTimeMillis() - startTime <= 1500){
+    sparkles();
 
 
     //Things to attack:
