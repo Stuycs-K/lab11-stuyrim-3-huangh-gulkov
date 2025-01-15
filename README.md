@@ -21,7 +21,7 @@ Make a clear list of features that work/dont work:
 ##### Actual Features
 
 1. :white_check_mark: The Quiet Kid tested.
-2. :white_check_mark: Young Karen tested.
+2. :question: Young Karen self support not tested.
 3. :question: Draw screen exists, but not tested
 4. :question: Boss class almost done; missing one more specialAttack
 
@@ -29,9 +29,9 @@ Make a clear list of features that work/dont work:
 ## Adventurer Subclasses
 | Character Name | Starting HP | Attack            | Special Attack  | Support   | Points |
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
-|  :gun: Quiet Kid| 25 HP       | Silence (2 DMG)   | AK47 (5 DMG/mark)    | Hoodie Up | Marks    |
-|:lotion_bottle: Young Karen | 30 HP       | HydroFlask (4 DMG) | Fury (10 DMG)   | Perfume   | Starbuck    |
-| :interrobang: Boss | XP          |                   |                 |           |        |
+|  :gun: Quiet Kid| 25 HP      | Silence (2 DMG)   | AK47 (5 DMG/mark) | Hoodie Up | Marks    |
+|:lotion_bottle: Young Karen | 30 HP | HydroFlask (4 DMG) | Fury (10 DMG) | Perfume | Starbuck |
+| :interrobang: Boss | 50 HP   |  WhackingLadle(5 (+5) DMG) | Morph (10 (+5) DMG) | Wage |
 
 
 ### The Kid in the Corner
@@ -47,3 +47,10 @@ Make a clear list of features that work/dont work:
 - Her special attack is getting her Starbucks/Pumpkin Spice Latte taken away, and she releases her fury on a random enemy (10 DMG). She must possesses a Starbuck drink in order for her to use this attack.
 - She supports others by spraying perfume on herself, increasing the probability of herself getting attacked by enemies.
 - She supports herself by buying herself a Starbucks drink. She can have at max 2 Starbucks.
+
+### Boss: The Lady
+- Starts with 50 HP.
+- They attacks by whacking enemies with a ladle. (5 (+5) DMG)
+- Her special attack is morphing into Mr. Moran and yell at kids. She also gains an extra-5-DMG buff, lasting one round. This move is automatically triggered when her wage reaches 0. (10 (+5) DMG).
+- She doesn't support others because she's a boss.
+- She supports herself by restoring 10 HP to herself.
