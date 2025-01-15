@@ -21,8 +21,9 @@ Make a clear list of features that work/dont work:
 ##### Actual Features
 
 1. :white_check_mark: The Quiet Kid tested.
-2. :question: Young Karen tested except for self-support. Can only be tested when parties are done.
+2. :white_check_mark: Young Karen tested.
 3. :question: Draw screen exists, but not tested
+4. :question: Boss class almost done; missing one more specialAttack
 
 
 ## Adventurer Subclasses
