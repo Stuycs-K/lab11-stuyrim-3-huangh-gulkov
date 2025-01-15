@@ -83,7 +83,7 @@ for (int i = 2; i <= 29; i++) {
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
     Text.go(startRow, startCol);
-    System.out.print(Text.colorize(s, Text.RED + Text.BRIGHT));
+    System.out.print(Text.colorize(s, Text.WHITE + Text.BRIGHT));
   }
 
   /*Use this method to place text on the screen at a particular location.
@@ -187,6 +187,7 @@ for (int i = 2; i <= 29; i++) {
     drawParty(friend, friendRow);
     //draw enemy party
     drawParty(enemy, enemyRow);
+    Text.reset();
   }
 
   public static String userInput(Scanner in){
@@ -212,7 +213,7 @@ for (int i = 2; i <= 29; i++) {
     Text.hideCursor();
     Text.clear();
      long startTime = System.currentTimeMillis();
-    while(System.currentTimeMillis() - startTime <= 1500){
+    while(System.currentTimeMillis() - startTime <= 1000){
     sparkles();
     }
 
@@ -262,13 +263,14 @@ for (int i = 2; i <= 29; i++) {
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen(party, enemies, 2, 26 );//initial state.
+    drawScreen(party, enemies, 4, 25 );//initial state.
 
     //Main loop
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-    drawText(preprompt, 20, 2);
+    drawText(preprompt, 22, 2);
+    Text.go(23, 2);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
@@ -283,7 +285,8 @@ for (int i = 2; i <= 29; i++) {
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          String result =  party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          TextBox(22, 2, 78, 1, result);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
@@ -319,7 +322,7 @@ for (int i = 2; i <= 29; i++) {
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
+          drawText(preprompt, 23, 2);
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
@@ -360,7 +363,7 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
-      drawScreen(party, enemies, 2, 26);
+      drawScreen(party, enemies, 4, 25);
 
 
     }//end of main game loop
