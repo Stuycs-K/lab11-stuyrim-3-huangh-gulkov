@@ -27,7 +27,7 @@ Make a clear list of features that work/dont work:
 5. :white_check_mark: sparkles done
 6. :white_check_mark: party member turn done
 7. :question: up to last conditional for enemy turn
-8. :bettle: bug with textBox; doesn't erase after writing in
+8. :beetle: bug with textBox; doesn't erase after writing in
 
 
 ## Adventurer Subclasses
