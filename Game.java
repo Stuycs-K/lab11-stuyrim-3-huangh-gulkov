@@ -421,14 +421,9 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
-<<<<<<< HEAD
-      drawScreen(party, enemies, 4, 25);
-=======
-
       drawParty(party, 4);
       drawParty(enemies, 25);
       TextBox(20, 2, 77, 2, event);
->>>>>>> 7512462a82fb891dfe0d9420096a09c9a0ffe0f3
 
 
     }//end of main game loop
