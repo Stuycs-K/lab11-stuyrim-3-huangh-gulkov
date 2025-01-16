@@ -50,6 +50,7 @@ public abstract class Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public abstract String specialAttack(Adventurer other);
+  public abstract String specialAttack2(Adventurer other);
 
   /*
   standard methods

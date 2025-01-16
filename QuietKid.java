@@ -63,7 +63,7 @@ public class QuietKid extends Adventurer{
       timesAttacked.add(1);
     }
     if(reachedLimit()){
-      return this + " attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note.\n" + specialAttack(other);
+      return this + " attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note. " + specialAttack(other);
     }
     return this + " attacks " + other + " with his silence, dealing 2 DMG. He writes down the name of the Adventurer attacked in his Death Note.";
   }
@@ -139,11 +139,12 @@ public class QuietKid extends Adventurer{
       }
     }
     if(expectedDMG.length == 1){
-      result += " DMG. Death Note is reset";
+      result += " DMG. Death Note is reset.";
     }
     else{
       result += " DMG each. Death Note is reset.";
     }
     return result;
   }
+  public String specialAttack2(Adventurer other){return "";}
 }

@@ -60,6 +60,7 @@ public class YoungKaren extends Adventurer{
     }
     return this + " doesn't have any Starbucks. " + this + " must have at least one Starbucks drink to use the special Attack.";
   }
+  public String specialAttack2(Adventurer other){return "";}
 
   //others
   public void lessTargetable(){

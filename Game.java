@@ -96,34 +96,34 @@ for (int i = 2; i <= 29; i++) {
   *@param width the number of characters per row
   *@param height the number of rows
   */
-  public static void TextBox(int row, int col, int width, int height, String text){
-    // textClear(row, col, width, height);
-    int index = 0;
-    int end = 0;
-    for(int i = 0; i < height; i++){
-      Text.go(row + i, col);
-      if(text.length() > index){
-        if(index + width < text.length()){
-          end = index + width;
-        }
-        if(index + width > text.length()){
-          end = text.length();
-        }
-        System.out.print(text.substring(index, end));
-        index = end;
-      }
-      int spaces = width - (end - index);
-      if(spaces > 0){
-        System.out.print(" ");
-      }
-      else{
-        while(width > 0){
-          System.out.print(" ");
-          width--;
-        }
-      }
-    }
-  }
+  // public static void TextBox(int row, int col, int width, int height, String text){
+  //   // textClear(row, col, width, height);
+  //   int index = 0;
+  //   int end = 0;
+  //   for(int i = 0; i < height; i++){
+  //     Text.go(row + i, col);
+  //     if(text.length() > index){
+  //       if(index + width < text.length()){
+  //         end = index + width;
+  //       }
+  //       if(index + width > text.length()){
+  //         end = text.length();
+  //       }
+  //       System.out.print(text.substring(index, end));
+  //       index = end;
+  //     }
+  //     int spaces = width - (end - index);
+  //     if(spaces > 0){
+  //       System.out.print(" ");
+  //     }
+  //     else{
+  //       while(width > 0){
+  //         System.out.print(" ");
+  //         width--;
+  //       }
+  //     }
+  //   }
+  // }
 
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
@@ -288,7 +288,7 @@ for (int i = 2; i <= 29; i++) {
       input = userInput(in);
 
       //example debug statment
-      TextBox(15,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent + "\n" + party);
+      // TextBox(15,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent + "\n" + party);
 
       //things I want to print later in drawScreen
       String event = "";
@@ -320,6 +320,7 @@ for (int i = 2; i <= 29; i++) {
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -377,7 +378,7 @@ for (int i = 2; i <= 29; i++) {
             event += current.support();
           }
           else if(move == 2){
-            event += current.specialAttack(target);
+            event += current.specialAttack2(target);
           }
         }
         else{
@@ -400,6 +401,7 @@ for (int i = 2; i <= 29; i++) {
 
         //Decide where to draw the following prompt:
         if(!(whichOpponent == enemies.size() - 1)){
+          textClear(22, 2, 78, 1);
           String prompt = "press enter to see next turn";
           TextBox(23, 2, 78, 1, prompt);
         }
@@ -416,14 +418,14 @@ for (int i = 2; i <= 29; i++) {
         turn++;
         partyTurn=true;
         //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit";
         TextBox(22, 2, 78, 1, prompt);
       }
 
       //display the updated screen after input has been processed.
       drawParty(party, 4);
       drawParty(enemies, 25);
-      TextBox(20, 2, 77, 2, event);
+      TextBox(18, 2, 77, 4, event);
 
 
     }//end of main game loop
@@ -448,5 +450,27 @@ for (int i = 2; i <= 29; i++) {
       result.add(current);
     }
     return result;
+  }
+  public static void TextBox(int row, int col, int width, int height, String text){
+    textClear(row, col, width, height);
+    for(int i = 0; i < height; i++){
+      Text.go(row + i, col);
+      if(text.length() <= width){
+        System.out.print(text);
+        text = "";
+      }
+      else{
+        System.out.print(text.substring(0, width));
+        text = text.substring(width, text.length());
+      }
+    }
+  }
+  public static void removeWhenDead(ArrayList<Adventurer> party){
+    for(int i = 0; i < party.size(); i++){
+      if(party.get(i).getHP() <= 0){
+        party.remove(i);
+        i--;
+      }
+    }
   }
 }
