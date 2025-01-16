@@ -399,7 +399,7 @@ for (int i = 2; i <= 29; i++) {
 
 
         //Decide where to draw the following prompt:
-        if(!(whichOpponent == enemies.size() - 1){
+        if(!(whichOpponent == enemies.size() - 1)){
           String prompt = "press enter to see next turn";
           TextBox(23, 2, 78, 1, prompt);
         }
