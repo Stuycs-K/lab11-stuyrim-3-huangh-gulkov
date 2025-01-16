@@ -399,8 +399,10 @@ for (int i = 2; i <= 29; i++) {
 
 
         //Decide where to draw the following prompt:
-        String prompt = "press enter to see next turn";
-        TextBox(23, 2, 78, 1, prompt);
+        if(!(whichOpponent == enemies.size() - 1){
+          String prompt = "press enter to see next turn";
+          TextBox(23, 2, 78, 1, prompt);
+        }
 
         whichOpponent++;
 
@@ -415,6 +417,7 @@ for (int i = 2; i <= 29; i++) {
         partyTurn=true;
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+        TextBox(22, 2, 78, 1, prompt);
       }
 
       //display the updated screen after input has been processed.
