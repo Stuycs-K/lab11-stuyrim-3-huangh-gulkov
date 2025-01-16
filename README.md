@@ -21,9 +21,13 @@ Make a clear list of features that work/dont work:
 ##### Actual Features
 
 1. :white_check_mark: The Quiet Kid tested.
-2. :question: Young Karen self support not tested.
-3. :question: Draw screen exists, but not tested
+2. :white_check_mark: Young Karen tested.
+3. :white_check_mark: Draw screen exists, but not tested
 4. :question: Boss class almost done; missing one more specialAttack
+5. :white_check_mark: sparkles done
+6. :white_check_mark: party member turn done
+7. :question: up to last conditional for enemy turn
+8. :beetle: bug with textBox; doesn't erase after writing in
 
 
 ## Adventurer Subclasses

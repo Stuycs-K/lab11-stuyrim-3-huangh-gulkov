@@ -83,7 +83,7 @@ for (int i = 2; i <= 29; i++) {
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
     Text.go(startRow, startCol);
-    System.out.print(Text.colorize(s, Text.RED + Text.BRIGHT));
+    System.out.print(Text.colorize(s, Text.WHITE + Text.BRIGHT));
   }
 
   /*Use this method to place text on the screen at a particular location.
@@ -97,33 +97,32 @@ for (int i = 2; i <= 29; i++) {
   *@param height the number of rows
   */
   public static void TextBox(int row, int col, int width, int height, String text){
+    // textClear(row, col, width, height);
     int index = 0;
     int end = 0;
     for(int i = 0; i < height; i++){
       Text.go(row + i, col);
-    if(text.length() > index){
-      if(index + width < text.length()){
-        end = index + width;
+      if(text.length() > index){
+        if(index + width < text.length()){
+          end = index + width;
+        }
+        if(index + width > text.length()){
+          end = text.length();
+        }
+        System.out.print(text.substring(index, end));
+        index = end;
       }
-      if(index + width > text.length()){
-        end = text.length();
-      }
-      System.out.print(text.substring(index, end));
-      index = end;
-    }
-    int spaces = width - (end - index);
-    if(spaces > 0){
-      System.out.print(" ");
-    }
-    else{
-      while(width > 0){
+      int spaces = width - (end - index);
+      if(spaces > 0){
         System.out.print(" ");
-        width--;
+      }
+      else{
+        while(width > 0){
+          System.out.print(" ");
+          width--;
+        }
       }
     }
-
-    }
-
   }
 
     //return a random adventurer (choose between all available subclasses)
@@ -149,17 +148,21 @@ for (int i = 2; i <= 29; i++) {
 
    // 28 and 26 are the dividers we used in the draw screen
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
-      for(int i = 0; i < party.size(); i++){
-        if(party.size() > 2){
-          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getName());
-          TextBox(startRow + 1, 2 + (28 * i), 26, 1, "HP: " + party.get(i).getHP());
-          TextBox(startRow + 2, 2 + (28 * i), 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
-        }
-        else{
-          TextBox(startRow, 2 + (28 * i), 26, 1, party.get(i).getName());
-          TextBox(startRow + 1, 2 + (28 * i), 26, 1, "HP: " + party.get(i).getHP());
-          TextBox(startRow + 2, 2 + (28 * i), 26, 1, party.get(i).getSpecialName() + ": " + party.get(i).getSpecial());
-        }
+      if(party.size() > 1){
+        TextBox(startRow, 2, 25, 1, party.get(0).getName());
+        TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
+        TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
+        TextBox(startRow, 28, 26, 1, party.get(1).getName());
+        TextBox(startRow + 1, 28, 26, 1, "HP: " + party.get(1).getHP());
+        TextBox(startRow + 2, 28, 26, 1, party.get(1).getSpecialName() + ": " + party.get(1).getSpecial());
+        TextBox(startRow, 55, 25, 1, party.get(2).getName());
+        TextBox(startRow + 1, 55, 25, 1, "HP: " + party.get(2).getHP());
+        TextBox(startRow + 2, 55, 25, 1, party.get(2).getSpecialName() + ": " + party.get(2).getSpecial());
+      }
+      else{
+        TextBox(startRow, 2, 25, 1, party.get(0).getName());
+        TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
+        TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
       }
     }
 
@@ -187,16 +190,20 @@ for (int i = 2; i <= 29; i++) {
     drawParty(friend, friendRow);
     //draw enemy party
     drawParty(enemy, enemyRow);
+    Text.reset();
   }
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
+      Text.go(23, 2);
 
       //show cursor
+      Text.showCursor();
 
       String input = in.nextLine();
 
       //clear the text that was written
+      textClear(23, 2, 78, 1);
 
       return input;
   }
@@ -212,7 +219,7 @@ for (int i = 2; i <= 29; i++) {
     Text.hideCursor();
     Text.clear();
      long startTime = System.currentTimeMillis();
-    while(System.currentTimeMillis() - startTime <= 1500){
+    while(System.currentTimeMillis() - startTime <= 1000){
     sparkles();
     }
 
@@ -243,13 +250,15 @@ for (int i = 2; i <= 29; i++) {
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //add enemies and party to all adventurers
+    ArrayList<Adventurer> copyOfEnemies = copyArrayList(enemies);
+    ArrayList<Adventurer> copyofTeam = copyArrayList(party);
     for(Adventurer current : enemies){
-      current.setEnemies(party);
-      current.setTeam(enemies);
+      current.setEnemies(copyofTeam);
+      current.setTeam(copyOfEnemies);
     }
     for(Adventurer current : party){
-      current.setEnemies(enemies);
-      current.setTeam(party);
+      current.setEnemies(copyOfEnemies);
+      current.setTeam(copyofTeam);
     }
 
 
@@ -262,20 +271,27 @@ for (int i = 2; i <= 29; i++) {
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen(party, enemies, 2, 26 );//initial state.
+    drawScreen(party, enemies, 4, 25 );//initial state.
 
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-    drawText(preprompt, 20, 2);
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/";
+    if(!(party.get(whichPlayer) instanceof QuietKid)){
+      preprompt += "special/";
+    }
+    preprompt += "support/quit";
+    TextBox(22, 2, 78, 1, preprompt);
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      TextBox(15,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent + "\n" + party);
+
+      //things I want to print later in drawScreen
+      String event = "";
 
       //display event based on last turn's input
       if(partyTurn){
@@ -283,17 +299,12 @@ for (int i = 2; i <= 29; i++) {
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          event +=  party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          if(party.get(whichPlayer) instanceof QuietKid || party.get(whichPlayer) instanceof YoungKaren){
-            party.get(whichPlayer).specialAttack(party.get(whichPlayer));
-          }
-          else{
-            party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
-          }
+          event += party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         //////////////////////////////// THIS IS THE CORRECT WAY OF DOING IT ////////////////////////////////
@@ -302,10 +313,10 @@ for (int i = 2; i <= 29; i++) {
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if(Integer.parseInt(input.substring(input.length() - 1, input.length())) == whichPlayer){
-            party.get(whichPlayer).support();
+            event += party.get(whichPlayer).support();
           }
           else{
-            party.get(whichPlayer).support(party.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+            event += party.get(whichPlayer).support(party.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -315,16 +326,22 @@ for (int i = 2; i <= 29; i++) {
         whichPlayer++;
 
 
+
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/";
+          if(!(party.get(whichPlayer) instanceof QuietKid)){
+            prompt += "special/";
+          }
+          prompt += "support/quit";
+          TextBox(22, 2, 78, 1, prompt);
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          String prompt = "press enter to see enemy's turn";
+          TextBox(22, 2, 78, 1, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
@@ -337,12 +354,53 @@ for (int i = 2; i <= 29; i++) {
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        //YOUR CODE HERE
+        Adventurer target = party.get((int) (Math.random() * party.size()));
+        Adventurer current = enemies.get(whichOpponent);
+        if(current instanceof QuietKid){
+          int move = (int) (Math.random() * 3);
+          if(move == 0){
+            event += current.attack(target);
+          }
+          else if(move == 1){
+            event += current.support(enemies.get((int) (Math.random() * enemies.size())));
+          }
+          else if(move == 2){
+            event += current.support();
+          }
+        }
+        else if(current instanceof Boss){
+          int move = (int) (Math.random() * 3);
+          if(move == 0){
+            event += current.attack(target);
+          }
+          else if(move == 1){
+            event += current.support();
+          }
+          else if(move == 2){
+            event += current.specialAttack(target);
+          }
+        }
+        else{
+          int move = (int) (Math.random() * 4);
+          if(move == 0){
+            event += current.attack(target);
+          }
+          else if(move == 1){
+            event += current.support();
+          }
+          else if(move == 2){
+            event += current.support(enemies.get((int) (Math.random() * enemies.size())));
+          }
+          else if(move == 3){
+            event += current.specialAttack(target);
+          }
+        }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
+        TextBox(23, 2, 78, 1, prompt);
 
         whichOpponent++;
 
@@ -360,7 +418,14 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
+<<<<<<< HEAD
       drawScreen(party, enemies, 4, 25);
+=======
+
+      drawParty(party, 4);
+      drawParty(enemies, 25);
+      TextBox(20, 2, 77, 2, event);
+>>>>>>> 7512462a82fb891dfe0d9420096a09c9a0ffe0f3
 
 
     }//end of main game loop
@@ -368,5 +433,22 @@ for (int i = 2; i <= 29; i++) {
 
     //After quit reset things:
     quit();
+  }
+
+  public static void textClear(int startRow, int startColumn, int width, int height){
+    Text.go(startRow, startColumn);
+    for(int i = 0; i < height; i++){
+      for(int j = 0; j < width; j++){
+        System.out.print(" ");
+      }
+      Text.go(startRow + i + 1, startColumn);
+    }
+  }
+  public static ArrayList<Adventurer> copyArrayList(ArrayList<Adventurer> arr){
+    ArrayList<Adventurer> result = new ArrayList<Adventurer>();
+    for(Adventurer current : arr){
+      result.add(current);
+    }
+    return result;
   }
 }
