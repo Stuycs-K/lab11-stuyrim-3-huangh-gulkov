@@ -85,7 +85,7 @@ public class Boss extends Adventurer{
       buff = false;
       return this + " got so rich that they buried " + other + " under a pile of cash, dealing " + actualDMG + " DMG. " + result;
     }
-    return this + "tried to bury " + other + " with money, but was too poor.";
+    return this + " tried to bury " + other + " with money, but was too poor.";
   }
 
   //helper func

@@ -148,21 +148,23 @@ for (int i = 2; i <= 29; i++) {
 
    // 28 and 26 are the dividers we used in the draw screen
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
-      if(party.size() > 1){
-        TextBox(startRow, 2, 25, 1, party.get(0).getName());
-        TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
-        TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
-        TextBox(startRow, 28, 26, 1, party.get(1).getName());
-        TextBox(startRow + 1, 28, 26, 1, "HP: " + party.get(1).getHP());
-        TextBox(startRow + 2, 28, 26, 1, party.get(1).getSpecialName() + ": " + party.get(1).getSpecial());
-        TextBox(startRow, 55, 25, 1, party.get(2).getName());
-        TextBox(startRow + 1, 55, 25, 1, "HP: " + party.get(2).getHP());
-        TextBox(startRow + 2, 55, 25, 1, party.get(2).getSpecialName() + ": " + party.get(2).getSpecial());
-      }
-      else{
-        TextBox(startRow, 2, 25, 1, party.get(0).getName());
-        TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
-        TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
+      if(party.size() > 0){
+        if(party.size() > 1){
+          TextBox(startRow, 2, 25, 1, party.get(0).getName());
+          TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
+          TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
+          TextBox(startRow, 28, 26, 1, party.get(1).getName());
+          TextBox(startRow + 1, 28, 26, 1, "HP: " + party.get(1).getHP());
+          TextBox(startRow + 2, 28, 26, 1, party.get(1).getSpecialName() + ": " + party.get(1).getSpecial());
+          TextBox(startRow, 55, 25, 1, party.get(2).getName());
+          TextBox(startRow + 1, 55, 25, 1, "HP: " + party.get(2).getHP());
+          TextBox(startRow + 2, 55, 25, 1, party.get(2).getSpecialName() + ": " + party.get(2).getSpecial());
+        }
+        else{
+          TextBox(startRow, 2, 25, 1, party.get(0).getName());
+          TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
+          TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
+        }
       }
     }
 
@@ -321,7 +323,10 @@ for (int i = 2; i <= 29; i++) {
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
-
+        removeWhenDead(enemies);
+        if(enemies.size() <= 0){
+          input = "q";
+        }
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
@@ -397,6 +402,12 @@ for (int i = 2; i <= 29; i++) {
           }
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+
+        removeWhenDead(party);
+        if(party.size() <= 0){
+          input = "q";
+        }
 
 
         //Decide where to draw the following prompt:
