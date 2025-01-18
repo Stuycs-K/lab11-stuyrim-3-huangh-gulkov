@@ -149,7 +149,10 @@ for (int i = 2; i <= 29; i++) {
    // 28 and 26 are the dividers we used in the draw screen
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
       if(party.size() > 0){
-        if(party.size() > 1){
+        textClear(startRow, 2, 25, 3);
+        textClear(startRow, 28, 26, 3);
+        textClear(startRow, 55, 25, 3);
+        if(party.size() == 3){
           TextBox(startRow, 2, 25, 1, party.get(0).getName());
           TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
           TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
@@ -159,6 +162,14 @@ for (int i = 2; i <= 29; i++) {
           TextBox(startRow, 55, 25, 1, party.get(2).getName());
           TextBox(startRow + 1, 55, 25, 1, "HP: " + party.get(2).getHP());
           TextBox(startRow + 2, 55, 25, 1, party.get(2).getSpecialName() + ": " + party.get(2).getSpecial());
+        }
+        else if(party.size() == 2){
+          TextBox(startRow, 2, 25, 1, party.get(0).getName());
+          TextBox(startRow + 1, 2, 25, 1, "HP: " + party.get(0).getHP());
+          TextBox(startRow + 2, 2, 25, 1, party.get(0).getSpecialName() + ": " + party.get(0).getSpecial());
+          TextBox(startRow, 28, 26, 1, party.get(1).getName());
+          TextBox(startRow + 1, 28, 26, 1, "HP: " + party.get(1).getHP());
+          TextBox(startRow + 2, 28, 26, 1, party.get(1).getSpecialName() + ": " + party.get(1).getSpecial());
         }
         else{
           TextBox(startRow, 2, 25, 1, party.get(0).getName());
@@ -253,14 +264,16 @@ for (int i = 2; i <= 29; i++) {
 
     //add enemies and party to all adventurers
     ArrayList<Adventurer> copyOfEnemies = copyArrayList(enemies);
+    ArrayList<Adventurer> copyOfEnemies2 = copyArrayList(enemies);
     ArrayList<Adventurer> copyofTeam = copyArrayList(party);
+    ArrayList<Adventurer> copyofTeam2 = copyArrayList(party);
     for(Adventurer current : enemies){
       current.setEnemies(copyofTeam);
       current.setTeam(copyOfEnemies);
     }
     for(Adventurer current : party){
-      current.setEnemies(copyOfEnemies);
-      current.setTeam(copyofTeam);
+      current.setEnemies(copyOfEnemies2);
+      current.setTeam(copyofTeam2);
     }
 
 
@@ -290,23 +303,47 @@ for (int i = 2; i <= 29; i++) {
       input = userInput(in);
 
       //example debug statment
-      // TextBox(15,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent + "\n" + party);
+      TextBox(12,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent);
 
       //things I want to print later in drawScreen
       String event = "";
 
       //display event based on last turn's input
       if(partyTurn){
+          // Adventurer target = enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length())));
+          // Adventurer current = party.get(whichPlayer);
+
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          event +=  party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          if(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))) instanceof QuietKid){
+            if(party.get(whichPlayer).getEnemies().indexOf(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length())))) == -1){
+              event += "This enemy is not targetable.";
+            }
+            else{
+              event += party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+            }
+          }
+          else{
+            event += party.get(whichPlayer).attack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          }
+
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("special ") || input.startsWith("sp ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          event += party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          if(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))) instanceof QuietKid){
+            if(party.get(whichPlayer).getEnemies().indexOf(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length())))) == -1){
+              event += "This enemy is not targetable.";
+            }
+            else{
+              event += party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+            }
+          }
+          else{
+            event += party.get(whichPlayer).specialAttack(enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length()))));
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         //////////////////////////////// THIS IS THE CORRECT WAY OF DOING IT ////////////////////////////////
@@ -360,8 +397,9 @@ for (int i = 2; i <= 29; i++) {
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        Adventurer target = party.get((int) (Math.random() * party.size()));
+
         Adventurer current = enemies.get(whichOpponent);
+        Adventurer target = current.getEnemy((int) (Math.random() * current.getEnemiesSize()));
         if(current instanceof QuietKid){
           int move = (int) (Math.random() * 3);
           if(move == 0){
@@ -434,6 +472,8 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
+      TextBox(13, 2, 78, 1, "" + party);
+      TextBox(14, 2, 78, 1, "" + enemies);
       drawParty(party, 4);
       drawParty(enemies, 25);
       TextBox(18, 2, 77, 4, event);
