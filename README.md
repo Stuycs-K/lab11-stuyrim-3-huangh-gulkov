@@ -24,7 +24,7 @@ Make a clear list of features that work/dont work:
 2. :white_check_mark: Young Karen tested.
 3. :white_check_mark: Draw screen exists, but not tested
 4. ✅: Boss class done;
-5. :white_check_mark: sparkles done
+5. ☑️: sparkles done
 6. :white_check_mark: party member turn done
 7. ✅: game loop done
 8. ✅ end screen done
