@@ -229,6 +229,8 @@ for (int i = 2; i <= 29; i++) {
 
   public static void run(){
     //Clear and initialize
+    boolean victory = false;
+    boolean actualVictory = false;
     Text.hideCursor();
     Text.clear();
      long startTime = System.currentTimeMillis();
@@ -303,7 +305,7 @@ for (int i = 2; i <= 29; i++) {
       input = userInput(in);
 
       //example debug statment
-      TextBox(12,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent);
+      // TextBox(12,2,78, 1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent);
 
       //things I want to print later in drawScreen
       String event = "";
@@ -312,6 +314,14 @@ for (int i = 2; i <= 29; i++) {
       if(partyTurn){
           // Adventurer target = enemies.get(Integer.parseInt(input.substring(input.length() - 1, input.length())));
           // Adventurer current = party.get(whichPlayer);
+          if(!(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+            while(!checkValidInput(input, enemies.size())){
+              TextBox(21, 2, 78, 1, "INVALID INPUT");
+              input = userInput(in);
+              textClear(21, 2, 78, 1);
+            }
+          }
+
 
 
         //Process user input for the last Adventurer:
@@ -363,6 +373,8 @@ for (int i = 2; i <= 29; i++) {
         removeWhenDead(enemies);
         if(enemies.size() <= 0){
           input = "q";
+          victory = true;
+          actualVictory = true;
         }
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -445,6 +457,8 @@ for (int i = 2; i <= 29; i++) {
         removeWhenDead(party);
         if(party.size() <= 0){
           input = "q";
+          victory = false;
+          actualVictory = true;
         }
 
 
@@ -472,8 +486,8 @@ for (int i = 2; i <= 29; i++) {
       }
 
       //display the updated screen after input has been processed.
-      TextBox(13, 2, 78, 1, "" + party);
-      TextBox(14, 2, 78, 1, "" + enemies);
+      // TextBox(13, 2, 78, 1, "" + party);
+      // TextBox(14, 2, 78, 1, "" + enemies);
       drawParty(party, 4);
       drawParty(enemies, 25);
       TextBox(18, 2, 77, 4, event);
@@ -484,6 +498,13 @@ for (int i = 2; i <= 29; i++) {
 
     //After quit reset things:
     quit();
+    if(actualVictory){
+      startTime = System.currentTimeMillis();
+      while(System.currentTimeMillis() - startTime <= 1000){
+        sparkles();
+     }
+    }
+    endScreen(victory);
   }
 
   public static void textClear(int startRow, int startColumn, int width, int height){
@@ -522,6 +543,74 @@ for (int i = 2; i <= 29; i++) {
         party.remove(i);
         i--;
       }
+    }
+  }
+  public static boolean checkValidInput(String input, int partySize){
+    if(!(input.startsWith("attack ") || input.startsWith("a "))){
+      if(!(input.startsWith("special ") || input.startsWith("sp "))){
+        if(!(input.startsWith("su ") || input.startsWith("support "))){
+          if(!(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+            return false;
+          }
+        }
+      }
+    }
+    if(!(input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+      if(Integer.parseInt(input.substring(input.length() - 1, input.length())) >= partySize){
+        return false;
+      }
+    }
+    return true;
+  }
+  public static void endScreen(boolean victory){
+    Text.clear();
+    if(victory){
+      Text.go(1,2);
+      for (int i = 0; i < 78; i++) {
+        System.out.print(Text.colorize("-", Text.YELLOW + Text.BRIGHT));
+      }
+      for (int i = 2; i <= 29; i++) {
+        Text.go(i, 1);
+        System.out.print(Text.colorize("|", Text.YELLOW + Text.BRIGHT));
+        Text.go(i, 80);
+        System.out.print(Text.colorize("|", Text.YELLOW + Text.BRIGHT));
+      }
+      Text.go(30, 2);
+      for (int i = 0; i < 78; i++) {
+        System.out.print(Text.colorize("-", Text.YELLOW + Text.BRIGHT));
+      }
+      TextBox(16, 36, 15, 1, Text.colorize("YOU WIN!", Text.YELLOW + Text.BRIGHT));
+      TextBox(15, 35, 20, 1, Text.colorize("----------", Text.YELLOW + Text.BRIGHT));
+      TextBox(17, 35, 20, 1, Text.colorize("----------", Text.YELLOW + Text.BRIGHT));
+      Text.go(16, 35);
+      System.out.print(Text.colorize("|", Text.YELLOW + Text.BRIGHT));
+      Text.go(16, 44);
+      System.out.print(Text.colorize("|", Text.YELLOW + Text.BRIGHT));
+      Text.go(31, 1);
+    }
+    else{
+      Text.go(1,2);
+      for (int i = 0; i < 78; i++) {
+        System.out.print(Text.colorize("-", Text.WHITE + Text.BRIGHT));
+      }
+      for (int i = 2; i <= 29; i++) {
+        Text.go(i, 1);
+        System.out.print(Text.colorize("|", Text.WHITE + Text.BRIGHT));
+        Text.go(i, 80);
+        System.out.print(Text.colorize("|", Text.WHITE + Text.BRIGHT));
+      }
+      Text.go(30, 2);
+      for (int i = 0; i < 78; i++) {
+        System.out.print(Text.colorize("-", Text.WHITE + Text.BRIGHT));
+      }
+      TextBox(16, 36, 15, 1, Text.colorize("YOU LOSE", Text.WHITE + Text.BRIGHT));
+      TextBox(15, 35, 20, 1, Text.colorize("----------", Text.WHITE + Text.BRIGHT));
+      TextBox(17, 35, 20, 1, Text.colorize("----------", Text.WHITE + Text.BRIGHT));
+      Text.go(16, 35);
+      System.out.print(Text.colorize("|", Text.WHITE + Text.BRIGHT));
+      Text.go(16, 44);
+      System.out.print(Text.colorize("|", Text.WHITE + Text.BRIGHT));
+      Text.go(31, 1);
     }
   }
 }
