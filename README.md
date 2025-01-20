@@ -35,7 +35,7 @@ Make a clear list of features that work/dont work:
 | -------------- | ----------- | ----------------- | --------------- | --------- | ------ |
 |  :gun: Quiet Kid| 25 HP      | Silence (2 DMG)   | AK47 (5 DMG/mark) | Hoodie Up | Marks    |
 |:lotion_bottle: Young Karen | 30 HP | HydroFlask (4 DMG) | Fury (10 DMG) | Perfume | Starbuck |
-| :interrobang: Boss | 50 HP   |  WhackingLadle(5 (+5) DMG) | Morph (10 (+5) DMG) | Regen Health | Wage |
+| :interrobang: Boss | 50 HP   |  WhackingLadle(5 (+5) DMG) | Morph (10 (+5) DMG) / Money (10 (+5) DMG)| Regen Health | Wage |
 
 
 ### The Kid in the Corner
@@ -56,5 +56,6 @@ Make a clear list of features that work/dont work:
 - Starts with 50 HP.
 - They attacks by whacking enemies with a ladle. (5 (+5) DMG)
 - Her special attack is morphing into Mr. Moran and yell at kids. She also gains an extra-5-DMG buff, lasting one round. This move is automatically triggered when her wage reaches 0. (10 (+5) DMG).
+- Her second special attack is if her wage is high enough, she buries the target adventurer under a pile of money.
 - She doesn't support others because she's a boss.
 - She supports herself by restoring 10 HP to herself.
